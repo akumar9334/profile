@@ -25,24 +25,57 @@
 
 
 <style>
+	 
 
 /*======================================
 //--//-->   ABOUT
 ======================================*/
-
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+.ftco-navbar-light {
+  transform: translateY(0);
+filter: drop-shadow(0 0 15px rgba(56,189,248,0.6));
+  transition: transform 0.3s ease, backdrop-filter 0.4s ease;
 }
 
-.about-mf .about-img {
-  margin-bottom: 2rem;
+.ftco-navbar-light.scrolled {
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
-
 .about-mf .about-img img {
-  margin-left: 10px;
+  width: 160px !important;
+  height: 160px !important;
+
+  max-width: none !important;   /* Fix img-fluid issue */
+  display: block;
+
+  border-radius: 50% !important;
+  object-fit: cover;
+
+  padding: 5px;
+  box-sizing: border-box;
+
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  background-size: 200% 200%;
+
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.6),
+    0 0 40px rgba(168,85,247,0.4);
+
+  animation: borderFlow 4s linear infinite;
+  transition: all 0.4s ease;
 }
 
+.about-mf .about-img img:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 30px rgba(56,189,248,0.9),
+    0 0 60px rgba(168,85,247,0.6);
+}
+
+@keyframes borderFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 .skill-mf .progress {
   /* background-color: #cde1f8; */
@@ -108,7 +141,142 @@
 .zoom-effect:hover {
   transform: scale(1.1);
 }
+.nav-profile {
+  width: 46px;
+  height: 46px;
 
+  padding: 6px;
+  object-fit: contain;
+
+  border-radius: 14px; /* card shape */
+  background: linear-gradient(145deg, #0f172a, #020617);
+
+  border: 1px solid rgba(56, 189, 248, 0.4);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+
+  transition: all 0.3s ease;
+}
+
+
+.nav-profile:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 10px 25px rgba(56, 189, 248, 0.4),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+}
+.navbar-brand span {
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.profile-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: radial-gradient(circle at top, #1e293b, #020617);
+  padding: 40px 60px;
+  border-radius: 12px;
+
+  max-width: 1000px;
+  margin: 50px auto;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+/* Left section */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.code-logo {
+  width: 90px;
+  filter: drop-shadow(0 0 15px rgba(56,189,248,0.6));
+}
+
+/* Text */
+.text h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  color: white;
+}
+
+.text h1 span {
+  background: linear-gradient(90deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text p {
+  margin-top: 8px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* Right profile image */
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  padding: 4px;
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+
+  box-shadow: 0 0 40px rgba(168,85,247,0.5);
+}
+/* ===== NAVBAR VERSION OF BANNER ===== */
+.navbar .navbar-banner {
+  background: transparent;
+  box-shadow: none;
+  padding: 5px 0;
+  margin: 0;
+  border-radius: 0;
+  max-width: 100%;
+}
+
+/* Reduce spacing */
+.navbar .left {
+  gap: 10px;
+}
+
+/* Smaller logo */
+.navbar .code-logo {
+  width: 40px;
+}
+
+/* Smaller name */
+.navbar .text h1 {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+/* Smaller subtitle */
+.navbar .text p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+/* Smaller profile image */
+.navbar .profile-pic {
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 0 10px rgba(168,85,247,0.4);
+}
 
 </style>
 
@@ -119,7 +287,23 @@
 	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Ajay kumar yadav</a>
+	  <div class="profile-banner navbar-banner">
+
+  <div class="left">
+    <img src="images/devImg.png" class="code-logo" alt="logo">
+    <div class="text">
+      <h1>Ajay <span>Kumar</span></h1>
+      
+    </div>
+  </div>
+
+  <!-- <div class="right">
+    <img src="images/akpassimage.jpg" alt="Ajay" class="profile-pic">
+  </div> -->
+</div>
+
+
+
 	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -222,7 +406,7 @@
 									  <div class="about-info">
 										<p><span class="title-s">Name: </span> <span>Ajay kumar yadav</span></p>
 										<p><span class="title-s">Job Role: </span> <span>Software Developer</span></p>
-										<p><span class="title-s">Experience: </span> <span>1+ years</span></p>
+										<p><span class="title-s">Experience: </span> <span>2+ years</span></p>
 										<p><span class="title-s">Address: </span> <span>Chandigarh, India</span></p>
 									  </div>
 									</div>
@@ -271,8 +455,8 @@
 								<h1 class="big">About</h1>
 								<h2 class="mb-4">About Me</h2>
 								
-								<p>I am a passionate Software developer with 1+  years of hands-on experience in building web applications. 
-									I have a solid understanding of Java fundamentals, and I'm familiar with frameworks like spring / Spring Boot and Servlet/Hibernate and database mysql & MongoDB . 
+								<p>I am a passionate Software developer with 2+  years of hands-on experience in building web applications. 
+									I have a solid understanding of Java fundamentals, and I'm familiar with frameworks like spring / Spring Boot and RESTful API Servlet/Hibernate and database mysql and Angular . 
 									I enjoy problem-solving and am eager to learn new technologies to enhance my skills. 
 									I thrive in collaborative environments and  committed to delivering high-quality code..</p>
 								<ul class="about-info mt-4 px-md-0 px-2">
@@ -313,7 +497,7 @@
           <div class="col-md-10 heading-section text-center ftco-animate">
           	<h1 class="big big-2">Resume</h1>
             <h2 class="mb-4">Resume</h2>
-            <p>Software Developer with 1+ years of experience in building and maintaining applications. Proficient in programming languages such as Java and Python, with a solid understanding of software development principles and best practices. Eager to contribute to innovative projects and collaborate with cross-functional teams to drive technical solutions.
+            <p>Software Developer with 2+ years of experience in building and maintaining applications. Proficient in programming languages such as Java and Python, with a solid understanding of software development principles and best practices. Eager to contribute to innovative projects and collaborate with cross-functional teams to drive technical solutions.
           </div>
         </div>
 
@@ -632,6 +816,32 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
-    
+    <script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+
+  // Navbar scroll style
+  const nav = document.getElementById("ftco-navbar");
+  nav.classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
+
   </body>
 </html>
